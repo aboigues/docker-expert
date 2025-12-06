@@ -1,0 +1,10 @@
+*.md
+.git
+.gitignore
+Dockerfile*
+.dockerignore
+vendor/
+bin/
+*.exe
+*.test
+*.out

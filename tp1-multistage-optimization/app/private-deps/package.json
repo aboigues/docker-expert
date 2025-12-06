@@ -1,0 +1,12 @@
+{
+  "name": "app-with-private-deps",
+  "version": "1.0.0",
+  "description": "Demo app with simulated private dependencies",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

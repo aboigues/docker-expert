@@ -1,0 +1,30 @@
+# ❌ MAUVAIS EXEMPLE - NE PAS UTILISER EN PRODUCTION
+# Ce Dockerfile montre toutes les anti-patterns à éviter
+
+FROM node:20
+
+# Pas de user non-root = DANGEREUX
+
+WORKDIR /app
+
+# Copie tout le contexte (y compris node_modules, .git, etc.)
+COPY . .
+
+# Installe TOUTES les dépendances (dev + prod)
+RUN npm install
+
+# Expose le port
+EXPOSE 3000
+
+# Lance en tant que root
+CMD ["npm", "start"]
+
+# Problèmes de ce Dockerfile:
+# 1. Image énorme (~1GB) car basée sur node:20 (pas alpine)
+# 2. Contient les dev dependencies (eslint, nodemon, etc.)
+# 3. Tourne en tant que root (risque de sécurité)
+# 4. Pas de .dockerignore = copie node_modules, .git, etc.
+# 5. Pas de multi-stage build
+# 6. Pas de cache optimization
+# 7. Pas de health check
+# 8. Utilise npm start au lieu de node directement
