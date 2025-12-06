@@ -1,0 +1,27 @@
+# ❌ MAUVAIS EXEMPLE - NE PAS UTILISER EN PRODUCTION
+# Ce Dockerfile Go montre les anti-patterns
+
+FROM golang:1.21
+
+WORKDIR /app
+
+# Copie tout
+COPY . .
+
+# Build avec les paramètres par défaut (binary dynamique, non optimisé)
+RUN go build -o app .
+
+# Expose le port
+EXPOSE 8080
+
+# Lance l'app
+CMD ["./app"]
+
+# Problèmes:
+# 1. Image énorme (~800MB) car basée sur golang (pas alpine)
+# 2. Binary dynamique (nécessite des libs système)
+# 3. Binary non optimisé (contient symbols de debug)
+# 4. Pas de multi-stage = tout le toolchain Go dans l'image
+# 5. Tourne en root
+# 6. Pas de .dockerignore
+# 7. Image finale contient le code source et les fichiers .go

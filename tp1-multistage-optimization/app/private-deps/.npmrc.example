@@ -1,0 +1,12 @@
+# EXEMPLE de fichier .npmrc avec token
+# NE JAMAIS COMMITER CE FICHIER AVEC UN VRAI TOKEN!
+
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+
+# Pour utiliser ce fichier:
+# 1. Copier .npmrc.example vers .npmrc
+# 2. Remplacer ${NPM_TOKEN} avec votre vrai token
+# 3. Ajouter .npmrc au .gitignore
+
+# Pour le build Docker avec secrets:
+# docker build --secret id=npm_token,src=.npmrc -t app .
