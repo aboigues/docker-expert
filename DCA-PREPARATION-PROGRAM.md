@@ -117,7 +117,7 @@ docker export/import
 - ✅ Utiliser les label et filtres pour la gestion
 - ✅ Décrire et interpréter les erreurs pour dépanner les problèmes d'installation
 - ✅ Déployer Docker sur plusieurs plateformes (Linux, Windows)
-- ✅ Participer au programme Docker Community Edition (CE)
+- ✅ Comprendre Docker Engine et Mirantis Container Runtime (MCR)
 - ✅ Identifier et sélectionner le meilleur storage driver pour un scénario
 
 **Fichiers de configuration importants :**
@@ -230,7 +230,8 @@ docker run --tmpfs
 - Maîtriser les commandes de base
 
 **Thèmes à étudier :**
-- [ ] Installation de Docker CE/EE sur Ubuntu, CentOS, Windows
+- [ ] Installation de Docker Engine sur Ubuntu, CentOS, Windows
+- [ ] Comprendre Mirantis Container Runtime (MCR) pour l'entreprise
 - [ ] Configuration de `/etc/docker/daemon.json`
 - [ ] Gestion du service Docker avec systemd
 - [ ] Logging drivers : json-file, syslog, journald, fluentd
@@ -1410,6 +1411,12 @@ La certification Docker DCA est un excellent moyen de valider vos compétences D
 **Changements majeurs en 2025 :**
 - ✅ UCP renommé en MKE (Mirantis Kubernetes Engine)
 - ✅ DTR renommé en MSR (Mirantis Secure Registry)
+- ✅ Nomenclature CE/EE obsolète : utiliser "Docker Engine" et "Mirantis Container Runtime (MCR)"
 - ✅ AUFS et DeviceMapper complètement dépréciés
 - ✅ Overlay2 comme storage driver standard
 - ✅ Support Swarm garanti jusqu'en 2030 par Mirantis
+
+**Notes importantes :**
+- **Docker CE** n'existe plus en tant que tel → maintenant simplement **Docker Engine**
+- **Docker EE** acquis par Mirantis (2019) → maintenant **Mirantis Container Runtime (MCR)**
+- Les suffixes `-ce` et `-ee` ont été retirés des versions depuis 2020
