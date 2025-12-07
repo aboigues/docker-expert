@@ -2,6 +2,18 @@
 
 Cette série de TPs vous permettra de maîtriser Docker au niveau expert. Chaque TP est conçu pour être progressif, testable et couvre des aspects avancés de Docker en production.
 
+## 🎓 Certification Docker DCA
+
+Ce repository comprend également un **[Programme complet de préparation à la certification Docker Certified Associate (DCA)](./DCA-PREPARATION-PROGRAM.md)** avec :
+- Programme structuré sur 12 semaines
+- Couverture complète des 6 domaines d'examen
+- Mapping avec les TPs existants
+- Examens blancs et questions types
+- Ressources complémentaires
+
+➡️ **[Accéder au programme de préparation DCA](./DCA-PREPARATION-PROGRAM.md)**
+➡️ **[Exercices pratiques supplémentaires](./DCA-PRACTICE-EXERCISES.md)**
+
 ## 📋 Prérequis
 
 - Docker Engine 24.0+ installé
@@ -118,10 +130,17 @@ chmod +x test.sh
 
 ## 📖 Ressources complémentaires
 
+### Documentation Docker
 - [Documentation officielle Docker](https://docs.docker.com/)
 - [Best practices Docker](https://docs.docker.com/develop/dev-best-practices/)
 - [Docker Security](https://docs.docker.com/engine/security/)
 - [BuildKit Documentation](https://github.com/moby/buildkit)
+
+### Préparation certification DCA
+- **[Programme de préparation DCA (12 semaines)](./DCA-PREPARATION-PROGRAM.md)** - Guide complet pour réussir la certification
+- **[Exercices pratiques DCA](./DCA-PRACTICE-EXERCISES.md)** - Plus de 20 exercices hands-on
+- [Documentation officielle DCA](https://training.mirantis.com/dca-certification-exam/)
+- [Docker Deep Dive - Nigel Poulton](https://www.amazon.com/Docker-Deep-Dive-Nigel-Poulton/dp/1521822808)
 
 ## 🤝 Contribution
 
