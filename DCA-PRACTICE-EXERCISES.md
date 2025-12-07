@@ -263,7 +263,7 @@ services:
         max_attempts: 3
 
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -452,12 +452,12 @@ Créez un Dockerfile multi-stage optimisé :
 
 ```dockerfile
 # Dockerfile
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 
-FROM node:18-alpine
+FROM node:20-alpine
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nodejs -u 1001
 WORKDIR /app
@@ -474,7 +474,7 @@ docker build -t myapp:optimized .
 
 # Comparer avec une version non-optimisée
 docker build -t myapp:unoptimized -f - . <<EOF
-FROM node:18
+FROM node:20
 WORKDIR /app
 COPY . .
 RUN npm install
@@ -503,7 +503,7 @@ curl localhost:3000
 
 **Challenge :**
 Optimisez encore plus en :
-- Utilisant `node:18-alpine` comme base
+- Utilisant `node:20-alpine` comme base
 - Supprimant les fichiers inutiles (.git, tests, etc.)
 - Utilisant `.dockerignore`
 
@@ -1147,10 +1147,10 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
 
 # Comparer différentes versions
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  aquasec/trivy image node:14
+  aquasec/trivy image node:18
 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
-  aquasec/trivy image node:18
+  aquasec/trivy image node:20
 ```
 
 **Critères de validation :**
@@ -1457,7 +1457,7 @@ services:
       - cache
 
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     environment:
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: myapp
