@@ -3,6 +3,8 @@
 
 ![DCA Badge](https://training.mirantis.com/wp-content/uploads/2019/05/Docker-Certification-Badge.png)
 
+> **🆕 Mise à jour 2025** : Ce programme a été actualisé pour refléter les derniers changements de la certification DCA gérée par Mirantis. Les références aux produits renommés (UCP → MKE, DTR → MSR) et les technologies dépréciées (AUFS, DeviceMapper) ont été mises à jour.
+
 ---
 
 ## 📋 Table des matières
@@ -31,7 +33,7 @@ La **Docker Certified Associate (DCA)** est la certification officielle de Docke
 - **Format :** En ligne, surveillé par webcam
 - **Langue :** Anglais
 - **Validité :** 2 ans
-- **Prix :** $195 USD (avec une reprise gratuite)
+- **Prix :** $199 USD
 - **Type :** Questions à choix multiples, vrai/faux, et scénarios pratiques
 
 ### À qui s'adresse cette certification ?
@@ -157,16 +159,16 @@ docker port
 
 **Compétences requises :**
 - ✅ Décrire les meilleures pratiques de sécurité pour Docker daemon et conteneurs
-- ✅ Démontrer la création d'un utilisateur UCP
+- ✅ Démontrer la création d'un utilisateur MKE (Mirantis Kubernetes Engine)
 - ✅ Configurer RBAC (Role-Based Access Control)
-- ✅ Intégrer UCP avec LDAP/AD
-- ✅ Démontrer la création d'une équipe UCP
-- ✅ Utiliser Docker Trusted Registry (DTR)
-- ✅ Décrire les meilleures pratiques d'utilisation de DTR
+- ✅ Intégrer MKE avec LDAP/AD
+- ✅ Démontrer la création d'une équipe MKE
+- ✅ Utiliser MSR (Mirantis Secure Registry)
+- ✅ Décrire les meilleures pratiques d'utilisation de MSR
 - ✅ Décrire le processus de signature d'image
 - ✅ Démontrer qu'une image passe un scan de sécurité
 - ✅ Activer Docker Content Trust
-- ✅ Configurer RBAC dans UCP
+- ✅ Configurer RBAC dans MKE
 - ✅ Comprendre et configurer les certificats TLS
 - ✅ Utiliser les secrets et configs dans Swarm
 
@@ -195,8 +197,7 @@ DOCKER_CONTENT_TRUST_SERVER
 - ✅ Utiliser tmpfs pour le stockage temporaire
 - ✅ Appliquer les permissions filesystem sur les volumes
 - ✅ Comprendre les storage drivers et leur impact
-- ✅ Gérer le Device Mapper et ses options
-- ✅ Configurer devicemapper
+- ✅ Configurer overlay2 et ses options avancées
 - ✅ Comparer et distinguer object vs block storage
 
 **Commandes clés à maîtriser :**
@@ -208,11 +209,13 @@ docker run --tmpfs
 ```
 
 **Storage drivers :**
-- **overlay2** : recommandé pour la plupart des cas
-- **aufs** : ancien, toujours utilisé sur Ubuntu 14.04
-- **devicemapper** : direct-lvm pour production
+- **overlay2** : recommandé pour la plupart des cas (Linux moderne)
 - **btrfs/zfs** : pour systèmes de fichiers spécifiques
-- **vfs** : pas de copy-on-write, lent
+- **vfs** : pas de copy-on-write, lent (tests uniquement)
+
+**⚠️ Dépréciés (ne plus utiliser) :**
+- **aufs** : complètement déprécié depuis Docker 20.10
+- **devicemapper** : déprécié, utiliser overlay2 à la place
 
 ---
 
@@ -287,7 +290,7 @@ docker ps --filter "label=env=prod"
 **Exercices pratiques :**
 ```dockerfile
 # Exemple de multi-stage build
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
@@ -438,7 +441,7 @@ docker inspect <container> | jq '.[0].NetworkSettings'
 - [ ] Bind mounts
 - [ ] tmpfs mounts
 - [ ] Volume drivers
-- [ ] Storage drivers (overlay2, devicemapper, etc.)
+- [ ] Storage drivers (overlay2, btrfs, zfs)
 - [ ] Backup et restore de volumes
 - [ ] Performance considerations
 
@@ -760,7 +763,7 @@ EOF
 ```dockerfile
 # syntax=docker/dockerfile:1.4
 
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Cache mount pour npm
@@ -1085,12 +1088,12 @@ D) `docker volume create --driver tmpfs --opt size=100m`
 **Question 15:**
 Quel storage driver est recommandé pour la production sur Linux moderne ?
 
-A) aufs
-B) devicemapper
+A) ~~aufs~~ (déprécié)
+B) ~~devicemapper~~ (déprécié)
 C) overlay2
 D) vfs
 
-**Réponse : C**
+**Réponse : C** - overlay2 est le storage driver recommandé pour tous les systèmes Linux modernes
 
 ---
 
@@ -1401,5 +1404,12 @@ La certification Docker DCA est un excellent moyen de valider vos compétences D
 
 ---
 
-*Dernière mise à jour : Décembre 2024*
-*Version du programme : 1.0*
+*Dernière mise à jour : Décembre 2025*
+*Version du programme : 2.0*
+
+**Changements majeurs en 2025 :**
+- ✅ UCP renommé en MKE (Mirantis Kubernetes Engine)
+- ✅ DTR renommé en MSR (Mirantis Secure Registry)
+- ✅ AUFS et DeviceMapper complètement dépréciés
+- ✅ Overlay2 comme storage driver standard
+- ✅ Support Swarm garanti jusqu'en 2030 par Mirantis
